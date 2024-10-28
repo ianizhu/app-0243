@@ -1,44 +1,46 @@
+import { NavLink } from "react-router-dom";
 
-export const Friends = () => {
-    return (
-      <div className="container-fluid">
-        <div className="row">
+const TableRow = (props) => {
+  return (
+    <tr>
+      <th scope="row">{props.index + 1}</th>
+      <td><NavLink to={"/profile/" + props.id}>{props.name} {props.lastname}</NavLink></td>
+      <td>{props.email}</td>
+    </tr>
+  );
+};
+
+export const Friends = (props) => {
+  let users = props.function();
+  let usersCount = Object.keys(users).length;
+  let userRow = [];
+
+  for (let i = 0; i < usersCount; i++) {
+    userRow.push(<TableRow key={i} index={i} id={users[i].id} name={users[i].name} lastname = {users[i].lastname} email={users[i].email}/>);
+  }
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12">
           <h3>Список друзей</h3>
           <p>Дополнительная информация</p>
         </div>
-
-        <div className="row">
-        <table className="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-        </div>
       </div>
-    )
-  }
+
+      <div className="row">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Имя и фамилия</th>
+              <th scope="col">E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userRow}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};

@@ -24,8 +24,8 @@ function App(props) {
           <Routes>
             <Route path="/" element={<h2>Глвная страница, выберите из меню слева</h2>} />
             <Route path="/main" element={<h2>Глвная страница, выберите из меню слева</h2>} />
-            <Route path="/profile" element={<Profile function={props.user} />} />
-            <Route path="/friends" element={<Friends />} />
+            <Route path="/profile/*" element={<Profile function={props.functions.key_getUser} />} />
+            <Route path="/friends" element={<Friends function={props.functions.key_getUsers}/>} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>

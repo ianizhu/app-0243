@@ -6,8 +6,9 @@ const mailStyle = {
 }
 
 export const Profile = (props) => {
-    let newUser = props.function();
-    console.log(newUser);
+    let userId = window.location.pathname.split("/")[2];
+    let newUser = props.function(userId);
+    console.log(userId);
     return (
     <>
     <h3>Профиль пользователя</h3>
