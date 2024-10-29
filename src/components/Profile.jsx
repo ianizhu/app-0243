@@ -23,7 +23,9 @@ export const Profile = (props) => {
         </div>
 
         <div className="col-md-4">
-            <img className={styles.img} src={newUser.avatar} alt="" />
+            <img className={styles.img} 
+            src={newUser.avatar} 
+            alt="" />
         </div>
     </div>
     </>
