@@ -49,17 +49,16 @@ const user = {
 // };
 
 let users = [];
-export function getUser() {
-
-    // for (let i = 0; i < Object.keys(users).length; i++) {
-    //     if(users[i].id == userId) return users[i];
-    // }
+export function getUser(userId) {
+    for (let i = 0; i < users.length; i++) {
+        if(users[i].id == userId) return users[i];
+    }
     return user;
 }
 
 export async function getUsers() {
     let response = await fetch("https://kalman.p-host.in/getUsers");
-    users = await response.json;
-    
+    users = await response.json();
+    // console.log(users);
     return users;
 }
